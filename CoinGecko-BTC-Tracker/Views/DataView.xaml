@@ -1,0 +1,97 @@
+﻿<UserControl x:Class="CoinGecko_BTC_Tracker.ViewModels.DataView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CoinGecko_BTC_Tracker.ViewModels"
+             xmlns:utils="clr-namespace:CoinGecko_BTC_Tracker.Utils"
+             mc:Ignorable="d"
+             Height="517" Width="933">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </UserControl.Resources>
+    <Grid Background="#FF1C1C1C">
+        <Canvas Background="#FF796F6F" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <GroupBox Height="78" Header="Price" Width="220" Canvas.Left="10" Canvas.Top="5" BorderBrush="Goldenrod" BorderThickness="2" Background="#FF262626" Foreground="WhiteSmoke" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Canvas>
+                    <Label Content="Min:" HorizontalAlignment="Center" Height="28" VerticalAlignment="Top" Foreground="#FFBFBFBF"/>
+                    <Label Content="{Binding LowestPrice}" HorizontalAlignment="Center" Height="28" VerticalAlignment="Center" Canvas.Left="33" Foreground="WhiteSmoke"/>
+                    <Label Content="Max:" HorizontalAlignment="Center" Height="28" VerticalAlignment="Top" Canvas.Top="27" Foreground="#FFBFBFBF"/>
+                    <Label Content="{Binding HighestPrice}" Height="28" Canvas.Left="33" Foreground="WhiteSmoke" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="27"/>
+                </Canvas>
+            </GroupBox>
+            <GroupBox Height="78" Header="Volume" Width="220" Canvas.Left="235" Canvas.Top="5" BorderBrush="Goldenrod" BorderThickness="2" Background="#FF262626" Foreground="WhiteSmoke" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Canvas>
+                    <Label Content="Min:" HorizontalAlignment="Center" Height="28" VerticalAlignment="Top" Foreground="#FFBFBFBF"/>
+                    <Label Content="{Binding LowestVolume}" HorizontalAlignment="Center" Height="28" VerticalAlignment="Center" Canvas.Left="33" Foreground="WhiteSmoke"/>
+                    <Label Content="Max:" HorizontalAlignment="Center" Height="28" VerticalAlignment="Top" Canvas.Top="27" Foreground="#FFBFBFBF"/>
+                    <Label Content="{Binding HighestVolume}" Height="28" Canvas.Left="33" Foreground="WhiteSmoke" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="27"/>
+                </Canvas>
+            </GroupBox>
+            <GroupBox Height="78" Header="Bullish" Width="220" Canvas.Left="460" Canvas.Top="5" BorderBrush="Goldenrod" BorderThickness="2" Background="#FF262626" Foreground="WhiteSmoke" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Canvas>
+                    <Label Content="Start:" HorizontalAlignment="Center" Height="28" VerticalAlignment="Top" Foreground="#FFBFBFBF"/>
+                    <Label Content="{Binding LongestBullishTrendStart}" HorizontalAlignment="Left" Height="28" VerticalAlignment="Center" Canvas.Left="36" Foreground="WhiteSmoke"/>
+                    <Label Content="End:" HorizontalAlignment="Center" Height="28" VerticalAlignment="Top" Canvas.Top="27" Foreground="#FFBFBFBF"/>
+                    <Label Content="{Binding LongestBullishTrendEnd}" Height="28" Canvas.Left="36" Foreground="WhiteSmoke" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="27"/>
+                </Canvas>
+            </GroupBox>
+            <GroupBox Height="78" Header="Bearish" Width="220" Canvas.Left="685" Canvas.Top="5" BorderBrush="Goldenrod" BorderThickness="2" Background="#FF262626" Foreground="WhiteSmoke" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Canvas>
+                    <Label Content="Start:" HorizontalAlignment="Center" Height="28" VerticalAlignment="Top" Foreground="#FFBFBFBF"/>
+                    <Label Content="{Binding LongestBearishTrendStart}" HorizontalAlignment="Center" Height="28" VerticalAlignment="Center" Canvas.Left="33" Foreground="WhiteSmoke"/>
+                    <Label Content="End:" HorizontalAlignment="Center" Height="28" VerticalAlignment="Top" Canvas.Top="27" Foreground="#FFBFBFBF"/>
+                    <Label Content="{Binding LongestBearishTrendEnd}" Height="28" Canvas.Left="33" Foreground="WhiteSmoke" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="27"/>
+                </Canvas>
+            </GroupBox>
+            <GroupBox Height="52" Header="Best Buy-Sell Dates" Width="445" Canvas.Left="10" Canvas.Top="88" BorderBrush="Goldenrod" BorderThickness="2" Background="#FF262626" Foreground="WhiteSmoke" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Canvas>
+                    <Label Content="Best Buy:" HorizontalAlignment="Center" Height="28" VerticalAlignment="Top" Foreground="#FFBFBFBF"/>
+                    <Label Content="{Binding BestBuyDate}" HorizontalAlignment="Left" Height="28" VerticalAlignment="Center" Canvas.Left="62" Foreground="WhiteSmoke" Width="146"/>
+                    <Label Content="Best Sell:" HorizontalAlignment="Left" Height="28" VerticalAlignment="Center" Foreground="#FFBFBFBF" Canvas.Left="213"/>
+                    <Label Content="{Binding BestSellDate}" Height="28" Canvas.Left="269" Foreground="WhiteSmoke" HorizontalAlignment="Left" VerticalAlignment="Center" Width="168"/>
+                </Canvas>
+            </GroupBox>
+            <GroupBox Height="52" Header="Best Sell First-Buy Dates" Width="445" Canvas.Left="460" Canvas.Top="88" BorderBrush="Goldenrod" BorderThickness="2" Background="#FF262626" Foreground="WhiteSmoke" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Canvas>
+                    <Label Content="Best Sell:" HorizontalAlignment="Center" Height="28" VerticalAlignment="Top" Foreground="#FFBFBFBF"/>
+                    <Label Content="{Binding BestSellFirstDate}" HorizontalAlignment="Left" Height="28" VerticalAlignment="Center" Canvas.Left="67" Foreground="WhiteSmoke" Width="136"/>
+                    <Label Content="Best Buy Back:" HorizontalAlignment="Left" Height="28" VerticalAlignment="Top" Foreground="#FFBFBFBF" Canvas.Left="208"/>
+                    <Label Content="{Binding BestBuyBackDate}" Height="28" Canvas.Left="301" Foreground="WhiteSmoke" HorizontalAlignment="Left" VerticalAlignment="Center" Width="136"/>
+                </Canvas>
+            </GroupBox>
+        </Canvas>
+        <Canvas x:Name="chartCanvas" 
+                    Width="600" 
+                    Height="300" 
+                    utils:MouseEvents.MouseMoveCommand="{Binding MouseMoveCommand}"
+                    utils:MouseEvents.MouseEnterCommand="{Binding MouseEnterCommand}"
+                    utils:MouseEvents.MouseLeaveCommand="{Binding MouseLeaveCommand}" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#FF262626" Margin="74,162,0,0">
+
+            <ItemsControl ItemsSource="{Binding DataPoints}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Ellipse Width="6" Height="6"
+                                     Fill="Green"
+                                     ToolTip="{Binding ToolTip}"
+                                     Visibility="{Binding IsToolTipVisible, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Canvas>
+        <Button Style="{DynamicResource ButtonStyle_Rounded}" Content="Fetch Data" Command="{Binding FetchData}" Width="116" Height="40" FontSize="20" FontFamily="Arial" Background="Gold" Foreground="Black" RenderTransformOrigin="0.541,0.503" HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Margin="679,411,0,0">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.201"/>
+                    <TranslateTransform X="-0.002" Y="-0.02"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Label Content="Start Date:" FontFamily="Arial" FontWeight="Bold" Foreground="WhiteSmoke" Margin="679,337,144,151" FontSize="20"/>
+        <DatePicker x:Name="startDatePicker" SelectedDate="{Binding StartDate, Mode=TwoWay}" BorderBrush="Gold" Margin="789,338,10,151" FontSize="16"/>
+        <Label Content="End Date:" FontFamily="Arial" Foreground="WhiteSmoke" FontWeight="Bold" Margin="679,371,148,114" FontSize="20"/>
+        <DatePicker x:Name="endDatePicker" SelectedDate="{Binding EndDate, Mode=TwoWay}" BorderBrush="Gold" Margin="789,373,10,116" FontSize="16"/>
+    </Grid>
+</UserControl>
