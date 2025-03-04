@@ -26,7 +26,7 @@ A WPF application that displays Bitcoin price and volume data fetched from the C
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/yourusername/CoinGecko-BTC-Tracker.git
+   git clone https://github.com/JasperOrenius/CoinGecko-BTC-Tracker.git
    cd CoinGecko-BTC-Tracker
 
 2. **Open the Project in Visual Studio**:
